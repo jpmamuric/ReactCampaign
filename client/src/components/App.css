@@ -1,0 +1,43 @@
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(122,188,255); /* Old browsers */
+  background: -moz-linear-gradient(45deg, rgba(122,188,255,1) 0%, rgba(96,171,248,1) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.Landing-container,
+.Landing-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.landing {
+  width: 100%;
+  max-height: 500px;
+}
+
+
+.btn_stripe_checkout {
+  cursor: pointer;
+}
+
+.sign_in {
+  color: #fff;
+  padding-right: 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .Landing-container {
+    flex-direction: row;
+  }
+
+  .Landing-text {
+    margin: 1em;
+  }
+}
