@@ -2,8 +2,9 @@ import React,{  Component} from 'react';
 import { connect }         from 'react-redux';
 import { Link }            from 'react-router-dom';
 
-import StripePayments      from './Payments';
-import './App.css';
+// import StripePayments      from './Payments';
+import menu from '../../../assets/menu.png';
+import './Header.css';
 
 class Header extends Component {
   renderLinks(){
@@ -15,11 +16,7 @@ class Header extends Component {
         return <a href='/auth/google' className='sign_in'>Signin with Google</a>
       default:
         return (
-          <div style={{ padding: 5}}>
-            <div>Credits: { user.credits }</div>
-            <StripePayments />
-            <a href='/api/logout' style={{ color: 'black'}}>Signout</a>
-          </div>
+          <img src={menu} alt='menu' className='header-menu'/>
         )
     }
   }
@@ -45,3 +42,10 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(Header);
+
+
+// <div style={{ padding: 5}}>
+// <div>Credits: { user.credits }</div>
+// <StripePayments />
+// <a href='/api/logout' style={{ color: 'black'}}>Signout</a>
+// </div>

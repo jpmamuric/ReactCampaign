@@ -1,0 +1,29 @@
+
+.Landing-container {
+  position: relative;
+}
+
+.Landing-img {
+  filter: brightness(60%);
+}
+
+.Landing-text {
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Landing-heading {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.Landing-heading-sub {
+  padding: 0 1.5rem;
+}
+
+.Landing-img {
+  width: 100%;
+}

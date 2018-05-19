@@ -1,18 +1,15 @@
-import 'materialize-css/dist/css/materialize.min.css';
 import React, { Component }     from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect }              from 'react-redux';
 import * as actions             from '../actions/auth';
-import Header                   from './Header';
-import LandingPage              from './pages/Landing';
-import DashboardPage            from './pages/Dashboard';
-import SurveyPage              from './pages/Survey'
+import Header                   from './layout/header/Header';
+import LandingPage              from './pages/landing/Landing';
+import DashboardPage            from './pages/dashboard/Dashboard';
+import SurveyPage              from './pages/survey/Survey'
 
-
-// <img src={require("../assets/images/google-sign-in.png")} />
 class App extends Component {
   componentDidMount(){
-    this.props.fetchUser()
+    this.props.fetchUser();
   }
   render() {
     return (

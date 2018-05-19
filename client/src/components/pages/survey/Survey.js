@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { reduxForm }        from 'redux-form';
 
-import SurveyForm           from '../surveys/SurveyForm';
-import SurveyReviewForm     from '../surveys/SurveyReviewForm';
+import SurveyForm           from '../../surveys/SurveyForm';
+import SurveyReviewForm     from '../../surveys/SurveyReviewForm';
 
 class Survey extends Component {
   //babel plugin allows simple state initialization
