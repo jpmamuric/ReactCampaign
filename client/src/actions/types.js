@@ -3,3 +3,6 @@ export const FETCH_SURVEYS          = 'FETCH_SURVEYS';
 
 export const FETCH_USER             = 'FETCH_USER';
 export const USER_CREDITS           = 'USER_CREDITS';
+
+export const TOGGLE_BACKDROP        = 'TOGGLE_BACKDROP';
+export const TOGGLE_SIDEBAR         = 'TOGGLE_SIDEBAR';

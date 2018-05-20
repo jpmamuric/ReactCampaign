@@ -4,7 +4,7 @@ import { Link }    from 'react-router-dom';
 
 import SurveyList from '../../surveys/SurveyList';
 import Modal from '../../ui/modal/Modal';
-import PaymentsPrompt from '../../PaymentsPrompt';
+import PaymentsPrompt from '../../payments/PaymentsPrompt';
 import * as actions from '../../../actions/auth';
 
 class Dashboard extends Component {

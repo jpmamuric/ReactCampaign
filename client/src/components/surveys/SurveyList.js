@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import * as actions         from '../../actions/survey';
+import SurveyItem from './SurveyItem';
+import * as actions    from '../../actions/survey';
+import './Survey.css';
 
 class SurveyList extends Component {
   componentDidMount(){
@@ -9,27 +11,7 @@ class SurveyList extends Component {
   }
 
   renderList(){
-    return this.props.surveys.reverse().map( survey => {
-      const { _id, title, body, dateSent, respondedYes, respondedNo} = survey;
-      return (
-        <div className='container' key={_id}>
-          <div className='card darken-1' >
-            <div className='card-content'>
-              <span className='card-title'>{title}</span>
-              <p>{body}</p>
-              <p className='right'>
-                Sent On: {new Date(dateSent).toLocaleDateString()}
-              </p>
-            </div>
-            <div className='card-action'>
-              <div>Yes: {respondedYes}</div>
-              <div>No: {respondedNo}</div>
-            </div>
-          </div>
-        </div>
-
-      )
-    });
+    return this.props.surveys.reverse().map( survey => <SurveyItem key={survey._id} survey={survey} /> );
   }
 
   render(){
@@ -37,7 +19,7 @@ class SurveyList extends Component {
       return <div> You have no surveys right now </div>
     }
     return (
-      <div>
+      <div className='survey-list'>
         {this.renderList()}
       </div>
     )

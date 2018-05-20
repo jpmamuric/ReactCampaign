@@ -2,8 +2,8 @@ import React from 'react'
 
 import './Backdrop.css';
 
-const Backdrop = ({ show, hide }) => {
-  return show ? <div className='Backdrop' onClick={ hide } />  : null
+const Backdrop = ({ open, close }) => {
+  return open ? <div className='Backdrop' onClick={ close } />  : null
 }
 
 export default Backdrop;
