@@ -1,3 +1,7 @@
+.modal-container {
+  position: relative;
+}
+
 .modal {
     position: fixed;
     z-index: 500;
@@ -5,8 +9,9 @@
     width: 70%;
     border-radius: 3px;
     padding: 1.6rem;
+    padding-bottom: 0;
     left: 15%;
-    top: 30%;
+    top: 10%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
 }
@@ -22,7 +27,7 @@
   opacity: 0
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 60em) {
     .modal {
         width: 50rem;
         left: calc(50% - 25rem);

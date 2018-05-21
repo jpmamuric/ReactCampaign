@@ -2,6 +2,7 @@
 Stripe Payments
 *******************************/
 .btn_stripe_checkout {
+  font-size: 1.5rem;
   color:#fff;
   margin: 0 1rem 0rem 0;
   display: inline-block;
@@ -11,13 +12,40 @@ Stripe Payments
   border-radius: 3px;
 }
 
+.prompt-header {
+  font-size: 2rem;
+}
+
+.prompt-text {
+  font-size: 1.4rem;
+  padding: .6rem;
+}
+
+.prompt-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.prompt-btn-close {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #eee;
+  border: none;
+  border-radius: 3px;
+  margin-top: .2rem;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 37.5em) {
   .btn_stripe_checkout {
       padding: .5rem 1rem;
       margin: 0 0 1rem 1.5rem;
   }
-}
 
-.prompt-text {
-  padding: 1rem;
+  .prompt-btn-close {
+    padding: .5rem 1rem;
+    margin-top: 0;
+  }
 }

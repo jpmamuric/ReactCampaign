@@ -39,7 +39,7 @@ class Dashboard extends Component {
 
     return (
       <div className='dashboard-container'>
-        <Modal show={!hasCredits} hide={hasCredits}>
+        <Modal show={!hasCredits } hide={hasCredits}>
           { paymentsPrompt }
         </Modal>
 
