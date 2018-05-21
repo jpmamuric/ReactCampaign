@@ -5,14 +5,16 @@ import { Link }    from 'react-router-dom';
 import SurveyList from '../../surveys/SurveyList';
 import Modal from '../../ui/modal/Modal';
 import PaymentsPrompt from '../../payments/PaymentsPrompt';
-import * as actions from '../../../actions/auth';
+import * as actions from '../../../actions/payments';
 
 import'./Dashboard.css'
 
 class Dashboard extends Component {
-  componentWillUpdate(nextProps) {
-    if(nextProps.user.credits !== 0 ) {
-        this.props.userCredits();
+  componentWillReceiveProps(nextProps) {
+    if(this.props.user !== nextProps.user) {
+        this.props.checkUserCredits(nextProps.user.credits);
+    } else {
+      return null;
     }
   }
 
@@ -21,7 +23,6 @@ class Dashboard extends Component {
     if(!user) {
       return <div> Loading ... </div>
     }
-
 
     let paymentsPrompt = null;
 

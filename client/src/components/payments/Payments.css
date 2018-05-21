@@ -29,6 +29,7 @@ Stripe Payments
 }
 
 .prompt-btn-close {
+  cursor: pointer;
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
   background-color: #eee;

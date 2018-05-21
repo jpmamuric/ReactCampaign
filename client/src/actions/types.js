@@ -6,7 +6,7 @@ export const DELETE_SURVEY_SUCCESS  = 'DELETE_SURVEY_SUCCESS';
 export const DELETE_SURVEY_FAIL     = 'DELETE_SURVEY_FAIL';
 
 export const FETCH_USER             = 'FETCH_USER';
-export const USER_CREDITS           = 'USER_CREDITS';
+export const USER_HAS_CREDITS       = 'USER_HAS_CREDITS';
 
 export const TOGGLE_BACKDROP        = 'TOGGLE_BACKDROP';
 export const TOGGLE_SIDEBAR         = 'TOGGLE_SIDEBAR';
