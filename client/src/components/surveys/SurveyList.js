@@ -27,7 +27,7 @@ class SurveyList extends Component {
 }
 
 const mapStateToProps = ({ surveys }) => {
-  return { surveys };
+  return { surveys: surveys.list };
 }
 
 export default connect(mapStateToProps, actions)(SurveyList);

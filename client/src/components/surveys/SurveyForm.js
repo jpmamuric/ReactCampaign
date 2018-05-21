@@ -8,10 +8,10 @@ import './Survey.css';
 
 const SurveyField = ({ input, label, meta: { error, touched } }) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input {...input} style={{ marginBottom: 5 }}/>
-      <div className='red-text'>
+    <div className='survey-form-item'>
+      <label className='survey-form-label'>{label}</label><br />
+      <input {...input} className='survey-form-input'/>
+      <div className='survey-form-error'>
         { touched && error }
       </div>
     </div>
@@ -36,11 +36,13 @@ class SurveyForm extends Component {
   render(){
     const { onSurveySubmit } = this.props;
     return (
-      <div className='container'>
-        <form className='survey_form' onSubmit={this.props.handleSubmit(onSurveySubmit) }>
+      <div className='survery-form-container'>
+        <form className='survey-form' onSubmit={this.props.handleSubmit(onSurveySubmit) }>
           { this.renderFields() }
-          <Link to='/dashboard' className='red btn-flat left white-text'>Cancel </Link>
-          <button type='submit' className='blue btn-flat right white-text'>Review </button>
+          <div className='survey-form-btns'>
+            <Link to='/dashboard' className='survey-form-btn-cancel'>Cancel </Link>
+            <button type='submit' className='survey-form-btn-review'>Review </button>
+          </div>
         </form>
       </div>
     );

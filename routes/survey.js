@@ -12,20 +12,64 @@ const router         = express.Router();
 
 
 /********************************************
-/api/survey Routes
+SURVEY GET
 ********************************************/
 router.get('/', requireLogin, async (req, res) => {
-  const surveys = await Survey.find({ _user: req.user.id })
-    .select({ recipients: false });
+  try {
+    const surveys = await Survey.find({ _user: req.user.id })
+      .select({ recipients: false });
 
-  res.send(surveys);
+    res.send(surveys);
+  }
+
+  catch(err) {
+    res.send(err);
+  }
+});
+
+router.get('/new-survey', requireLogin, async (req, res) => {
+  res.status(200).end();
+});
+
+router.get('/:surveyId', async (req, res) => {
+  try {
+    const { surveyId } = req.params;
+    const survey = await Survey.findOne({ _id: surveyId });
+
+    res.status(200).send(survey);
+  }
+  catch(err){
+    res.status(422).send({ message: 'unable to fetch survey', error: err.message });
+  }
 });
 
 router.get('/:surveyId/:choice', (req, res) => {
   res.send('Thank you for your feedback!');
 });
 
-//POST create survey
+
+/********************************************
+SURVEY DELETE
+********************************************/
+router.delete('/:surveyId', requireLogin, async (req, res, next) => {
+  const { surveyId } = req.params;
+  try {
+    await Survey.findByIdAndRemove({ _id: surveyId });
+    const surveys = await Survey
+      .find({ _user: req.user.id })
+      .select({ recipients: false });
+
+    res.status(200).send(surveys);
+  } 
+  catch (err) {
+    res.status(422).send({ message: 'unable to delete survey', error: err.message });
+  }
+});
+
+
+/********************************************
+SURVEY POST
+********************************************/
 router.post('/', requireLogin, requireCredits, async (req, res) => {
   const { title, subject, body, recipients } = req.body;
 

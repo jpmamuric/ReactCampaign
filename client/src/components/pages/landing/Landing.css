@@ -27,3 +27,23 @@
 .Landing-img {
   width: 100%;
 }
+
+/******************************
+MEDIA QUERIES
+*******************************/
+@media only screen and (max-width: 37.5em) {
+  .Landing-heading {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .Landing-container {
+    flex-direction: row;
+  }
+
+  .Landing-text {
+    margin: 1em;
+  }
+}

@@ -1,3 +1,7 @@
+:root {
+  --color-primary: rgba(96,171,248,1);
+}
+
 body {
   margin: 0;
   padding: 0;

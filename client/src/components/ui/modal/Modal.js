@@ -14,7 +14,7 @@ class Modal extends Component {
 
     return (
       <div>
-        <Backdrop show={show} hide={hide} />
+        <Backdrop open={show} close={hide} />
         <div className={ show ? `modal modal-show` : `modal modal-hide`}>
           { children }
         </div>

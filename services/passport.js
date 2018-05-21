@@ -33,13 +33,23 @@ passport.use(new GoogleStrategy({
     proxy: true
   },
   async (accessToken, refreshToken, profile, done) => {
-    const existingUser = await User.findOne({ googleId: profile.id });
-
-    if(existingUser) {
-      return done(null, existingUser);
-    } else {
-      const user = await new User({ googleId: profile.id, createdAt: createFormattedDate() }).save();
-      done(null, user);
+    try {
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if(existingUser) {
+        return done(null, existingUser);
+      } else {
+        const user = await new User({
+          googleId: profile.id,
+          googleName: profile.displayName,
+          createdAt: createFormattedDate()
+         }).save();
+        done(null, user);
+      }
     }
+
+    catch(err) {
+      done(null, err);
+    }
+
   })
 );

@@ -12,8 +12,13 @@ router.get('/', (req, res ) => {
   res.render('index', { title: 'React Campaign Homepage API' });
 });
 
-router.get( '/current_user', function(req, res) {
-  res.send(req.user);
+router.get( '/current_user', async (req, res) => {
+  try {
+    const user = await req.user;
+    res.status(200).send(req.user);
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 router.get('/logout', (req, res) => {
@@ -28,16 +33,22 @@ router.post('/stripe', requireLogin, async (req, res) => {
     return res.status(401).send({ error:'Must be logged in' });
   }
 
-  const charge = await stripe.charges.create({
-    amount: 100,
-    currency: "usd",
-    description: "React Campaign $1 for 5 credits charge",
-    source: req.body.id
-  });
+  try {
+    const charge = await stripe.charges.create({
+      amount: 100,
+      currency: "usd",
+      description: "React Campaign $1 for 5 credits charge",
+      source: req.body.id
+    });
 
-  req.user.credits += 5
-  const user = await req.user.save();
-  res.send(user);
+    req.user.credits += 5
+    const user = await req.user.save();
+    res.status(200).send(user);
+  }
+
+  catch (err) {
+    res.status(422).send(err);
+  }
 });
 
 

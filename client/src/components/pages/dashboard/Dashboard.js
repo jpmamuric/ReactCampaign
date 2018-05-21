@@ -7,6 +7,8 @@ import Modal from '../../ui/modal/Modal';
 import PaymentsPrompt from '../../payments/PaymentsPrompt';
 import * as actions from '../../../actions/auth';
 
+import'./Dashboard.css'
+
 class Dashboard extends Component {
   componentWillUpdate(nextProps) {
     if(nextProps.user.credits !== 0 ) {
@@ -23,20 +25,20 @@ class Dashboard extends Component {
 
     let paymentsPrompt = null;
 
-    if(user.credits !== 0 ){
+    if(user.credits === 0 ){
       paymentsPrompt = <PaymentsPrompt />
     }
 
     let addCampaign = (
       <div className="fixed-action-btn">
-        <Link to='/dashboard/new-survey' className="btn-add">
+        <Link to='/dashboard/new-survey' className="fixed-action-btn-link">
           +
         </Link>
       </div>
     )
 
     return (
-      <div>
+      <div className='dashboard-container'>
         <Modal show={!hasCredits} hide={hasCredits}>
           { paymentsPrompt }
         </Modal>

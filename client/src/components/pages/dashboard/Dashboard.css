@@ -1,0 +1,49 @@
+.dashboard-container {
+}
+
+.fixed-action-btn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+
+  width: 7rem;
+  height: 7rem;
+  background-color: rgba(64,150,238,1);
+  border-radius: 50%;
+  box-shadow: 0 .6rem 1rem 0 rgba(0,0,0,0.5);
+  transition: all .2s;
+}
+
+.fixed-action-btn:hover {
+  transform: translateY(-.4rem);
+  box-shadow: 0 1rem 1.2rem .4rem rgba(0,0,0,0.25);
+}
+
+.fixed-action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 .5rem .5rem 0 rgba(0,0,0,0.5);
+}
+
+.fixed-action-btn-link{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #fff;
+  font-size: 4rem;
+  padding-bottom: .5rem;
+  font-weight: 100;
+}
+
+
+
+.prompt-container {
+  font-size: 1.8rem;
+}
+.prompt-btn {
+  color: #fff;
+  padding: .3rem .7rem;
+  border-radius: 50%;
+  background-color: rgba(64,150,238,1);
+}

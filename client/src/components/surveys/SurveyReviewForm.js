@@ -4,32 +4,35 @@ import { withRouter } from 'react-router-dom';
 
 import * as actions from '../../actions/survey';
 import formFields   from './form_fields';
+import './Survey.css';
 
 const SurveyFormReview = ({ onCancelReview, values, submitSurvey, history }) => {
   const reviewFields = formFields.map((field,i) => {
       return (
-        <div key={i} className='survey_review_form'>
-          <label>{field.label}</label>
-          <div>{values[field.name]}</div>
+        <div key={i} className='survey-review-item'>
+          <label className='survey-review-label'>{field.label}:</label>
+          <div className='survey-review-name'>{values[field.name]}</div>
         </div>
       );
     });
 
   return (
-    <div style={{ padding: 25 }}>
-      <h5>Please confirm your entries</h5>
+    <div className='survey-review-form-container' >
+      <h5 className='survey-review-header'>Please confirm your entries</h5>
       {reviewFields}
-      <button
-        className='yellow white-text darken-3 btn-flat left'
-        onClick={onCancelReview}>
-        Back
-      </button>
-      <button
-        className='green white-text btn-flat right'
-        onClick={()=>submitSurvey(values, history)}>
-        Send
-        <i className='material-icons right' >email</i>
-      </button>
+      <div className='survey-review-btns'>
+        <button
+          className='survey-review-back'
+          onClick={onCancelReview}>
+          Back
+        </button>
+        <button
+          className='survey-review-send'
+          onClick={()=>submitSurvey(values, history)}>
+          Send
+          <i className='material-icons right' >email</i>
+        </button>
+      </div>
     </div>
   )
 };

@@ -1,55 +1,11 @@
-
-/******************************
-Stripe Payments
-*******************************/
-.btn_stripe_checkout {
-  color:#fff;
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 1rem 1.5rem;
-  background-color: royalblue;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
-
-
-/******************************
-DASHBOARD
-*******************************/
-.btn-add {
-width: 5rem;
-height: 5rem;
-background-color: royalblue;
-}
-
-
-.prompt-container {
-  font-size: 1.8rem;
-}
-.prompt-btn {
-  color: #fff;
-  padding: .3rem .7rem;
-  border-radius: 50%;
-  background-color: royalblue;
-}
-
-/******************************
-MEDIA QUERIES
-*******************************/
-@media only screen and (max-width: 37.5em) {
-  .Landing-heading {
-    text-align: center;
-    font-size: 2rem;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .Landing-container {
-    flex-direction: row;
+@keyframes fadeIn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
   }
 
-  .Landing-text {
-    margin: 1em;
+  100% {
+    visibility: visible;
+    opacity: 1;
   }
 }

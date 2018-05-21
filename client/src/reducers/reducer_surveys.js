@@ -1,10 +1,23 @@
 import * as types from '../actions/types';
 
-export default (state = [], action) => {
+const initialState = {
+  list: [],
+  item: null
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_SURVEYS:
-      return action.payload;
+      return {
+        ...state,
+        list: action.payload
+      };
+    case types.FETCH_SURVEY:
+      return {
+        ...state,
+        item: action.payload
+      };
     default:
-      return state
+      return state;
   }
 }

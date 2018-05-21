@@ -4,7 +4,7 @@ import { reduxForm }        from 'redux-form';
 import SurveyForm           from '../../surveys/SurveyForm';
 import SurveyReviewForm     from '../../surveys/SurveyReviewForm';
 
-class Survey extends Component {
+class CreateSurvey extends Component {
   //babel plugin allows simple state initialization
   state = { showReviewForm: false };
 
@@ -26,4 +26,4 @@ class Survey extends Component {
 
 export default reduxForm({
   form: 'surveyForm'
-})(Survey);
+})(CreateSurvey);

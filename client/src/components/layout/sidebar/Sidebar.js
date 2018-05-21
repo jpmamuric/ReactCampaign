@@ -4,20 +4,28 @@ import { NavLink } from 'react-router-dom'
 
 import './Sidebar.css';
 import Backdrop from '../../ui/backdrop/Backdrop';
+import Payments from '../../payments/Payments';
 import * as actions from '../../../actions/layout';
 
-const Sidebar = ({ sidebar, toggleSidebar }) => {
+const Sidebar = ({ sidebar, toggleSidebar, user }) => {
   return (
     <div className=''>
       <Backdrop open={sidebar} close={()=>toggleSidebar(false)}/>
       <div className={ sidebar ? "sidebar sidebar-open" : " sidebar sidebar-close" } >
-        <div className="">
-            Logo
-        </div>
-        <nav>
-          <ul className="" onClick={()=>toggleSidebar(false)}>
-            <NavLink exact to='/dashboard' className="">Home</NavLink>
-            <a className="" href='/api/logout'>Signout</a>
+        <nav >
+          {!user ? null : (
+            <div className='sidebar-profile'>
+              <h4 className='sidebar-profile-name'>{user.googleName}</h4>
+              <div className='sidebar-profile-box'>
+                <div className='sidebar-profile-credits'>Credits for campaigns: {user.credits}</div>
+                <Payments />
+              </div>
+
+            </div>
+          )}
+          <ul className='sidebar-list' onClick={()=>toggleSidebar(false)}>
+            <NavLink exact to='/dashboard' className="sidebar-items">Home</NavLink>
+            <a className="sidebar-items" href='/api/logout'>Signout</a>
           </ul>
         </nav>
       </div>
@@ -25,9 +33,10 @@ const Sidebar = ({ sidebar, toggleSidebar }) => {
   )
 }
 
-export const mapStateToProps = ({ layout }) => {
+export const mapStateToProps = ({ layout, auth }) => {
   const { sidebar } = layout;
-  return { sidebar };
+  const { user } = auth;
+  return { sidebar, user };
 }
 
 export default connect(mapStateToProps, actions )(Sidebar);

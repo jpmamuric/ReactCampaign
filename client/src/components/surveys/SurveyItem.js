@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Survey.css';
 
 const SurveyItem = ({ survey }) => {
-  const { title, body, dateSent, respondedYes, respondedNo} = survey;
+  const { title, body, dateSent, respondedYes, respondedNo, _id } = survey;
   return (
-    <div className='survey-item'>
+    <Link className='survey-item' to={`/dashboard/${_id}`}>
         <div className='survey-content'>
           <div className='survey-title'>{title}</div>
           <p className='survey-body'>{body}</p>
@@ -19,7 +20,7 @@ const SurveyItem = ({ survey }) => {
           <div>Yes: {respondedYes}</div>
           <div>No: {respondedNo}</div>
         </div>
-    </div>
+    </Link>
   );
 }
 

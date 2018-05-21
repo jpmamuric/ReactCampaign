@@ -1,0 +1,23 @@
+/******************************
+Stripe Payments
+*******************************/
+.btn_stripe_checkout {
+  color:#fff;
+  margin: 0 1rem 0rem 0;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  background-color: royalblue;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+@media (max-width: 37.5em) {
+  .btn_stripe_checkout {
+      padding: .5rem 1rem;
+      margin: 0 0 1rem 1.5rem;
+  }
+}
+
+.prompt-text {
+  padding: 1rem;
+}

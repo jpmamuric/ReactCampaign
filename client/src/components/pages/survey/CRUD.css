@@ -1,0 +1,38 @@
+.survey-edit-container {
+  animation: 1.5s ease-out backwards fadeIn;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.survey-edit-item {
+  border-radius: 3px;
+  display: inline-block;
+  background-color: #fff;
+  padding: 2rem;
+  margin: 0 1rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.25);
+}
+
+.survey-edit-title {
+  font-size: 3rem;
+  font-weight: 100;
+  margin-bottom: 2rem;
+}
+
+.survey-edit-body,
+.survey-edit-subject {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.survey-edit-delete {
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 1rem 2rem;
+  background-color: rgb(231, 85, 85);
+}
