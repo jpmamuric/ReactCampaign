@@ -10,12 +10,12 @@ class Modal extends Component {
   // }
 
   render() {
-    const { children, show, hide } = this.props;
+    const { children, open, close } = this.props;
 
     return (
       <div className='modal-container'>
-        <Backdrop open={show} close={hide} />
-        <div className={ show ? `modal modal-show` : `modal modal-hide`}>
+        <Backdrop open={open} close={close} />
+        <div className={ open ? `modal modal-show` : `modal modal-hide`}>
           { children }
         </div>
       </div>

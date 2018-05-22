@@ -10,16 +10,8 @@ import * as actions from '../../../actions/payments';
 import'./Dashboard.css'
 
 class Dashboard extends Component {
-  componentWillReceiveProps(nextProps) {
-    if(this.props.user !== nextProps.user) {
-        this.props.checkUserCredits(nextProps.user.credits);
-    } else {
-      return null;
-    }
-  }
-
   render(){
-    const { user, hasCredits } = this.props;
+    const { user } = this.props;
     if(!user) {
       return <div> Loading ... </div>
     }
@@ -40,19 +32,19 @@ class Dashboard extends Component {
 
     return (
       <div className='dashboard-container'>
-        <Modal show={!hasCredits } hide={hasCredits}>
+        <Modal open={user.credits === 0 } close={user.credits > 0 } >
           { paymentsPrompt }
         </Modal>
 
         <SurveyList />
-        { user.credits !== 0 ? addCampaign : null }
+        { user.credits !== 0 && !user.skipped ? addCampaign : null }
       </div>
     );
   }
 }
 const mapStateToProps = ({ auth }) => {
-  const { user, hasCredits } = auth;
-  return { user, hasCredits };
+  const { user } = auth;
+  return { user };
 }
 
 export default connect(mapStateToProps, actions)(Dashboard);

@@ -21,6 +21,10 @@ Stripe Payments
   padding: .6rem;
 }
 
+.prompt-card-number {
+  font-size: 2rem;
+}
+
 .prompt-btns {
   display: flex;
   justify-content: space-between;

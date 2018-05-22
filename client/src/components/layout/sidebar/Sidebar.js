@@ -17,7 +17,9 @@ const Sidebar = ({ sidebar, toggleSidebar, user }) => {
             <div className='sidebar-profile'>
               <h4 className='sidebar-profile-name'>{user.googleName}</h4>
               <div className='sidebar-profile-box'>
-                <div className='sidebar-profile-credits'>Credits for campaigns: {user.credits}</div>
+                <div className='sidebar-profile-credits'>
+                  Credits for campaigns: { user.skipped ? 0 : user.credits }
+                </div>
                 <Payments />
               </div>
 
