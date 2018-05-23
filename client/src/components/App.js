@@ -7,6 +7,7 @@ import LandingPage              from './pages/landing/Landing';
 import DashboardPage            from './pages/dashboard/Dashboard';
 import CreateSurveyPage         from './pages/survey/CreateSurvey';
 import EditSurveyPage           from './pages/survey/EditSurvey';
+import ForumPage                from './pages/forum/Forum';
 
 class App extends Component {
   componentDidMount(){
@@ -19,8 +20,9 @@ class App extends Component {
           <Layout>
             <Route exact path='/' component={LandingPage}/>
             <Route exact path='/dashboard' component={DashboardPage}/>
-            <Route path="/dashboard/new-survey" component={CreateSurveyPage} />
+            <Route exact path="/dashboard/new-survey" component={CreateSurveyPage} />
             <Route path='/dashboard/:id' component={EditSurveyPage}/>
+            <Route path='/forum' component={ForumPage} />
           </Layout>
         </BrowserRouter>
       </div>

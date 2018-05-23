@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link }    from 'react-router-dom';
+import { Link, Redirect }    from 'react-router-dom';
 
 import SurveyList from '../../surveys/SurveyList';
 import Modal from '../../ui/modal/Modal';
@@ -10,17 +10,8 @@ import * as actions from '../../../actions/payments';
 import'./Dashboard.css'
 
 class Dashboard extends Component {
-  render(){
-    const { user } = this.props;
-    if(!user) {
-      return <div> Loading ... </div>
-    }
-
+  renderDashboard(user) {
     let paymentsPrompt = null;
-
-    if(user.credits === 0 ){
-      paymentsPrompt = <PaymentsPrompt />
-    }
 
     let addCampaign = (
       <div className="fixed-action-btn">
@@ -30,15 +21,34 @@ class Dashboard extends Component {
       </div>
     )
 
-    return (
-      <div className='dashboard-container'>
-        <Modal open={user.credits === 0 } close={user.credits > 0 } >
-          { paymentsPrompt }
-        </Modal>
+    switch (user) {
+      case null:
+        return  <div> Loading ... </div>
+      case false:
+        return <Redirect to="/" />
+      default:
+        if(user.credits === 0 ){
+          paymentsPrompt = <PaymentsPrompt />
+        }
 
-        <SurveyList />
-        { user.credits !== 0 && !user.skipped ? addCampaign : null }
-      </div>
+        return (
+          <div>
+            <Modal open={user.credits === 0 } close={user.credits > 0 } >
+              { paymentsPrompt }
+            </Modal>
+
+            <SurveyList />
+            { user.credits !== 0 && !user.skipped ? addCampaign : null }
+          </div>
+        );
+     }
+  }
+
+  render(){
+    return (
+        <div className='dashboard-container'>
+          { this.renderDashboard(this.props.user) }
+        </div>
     );
   }
 }

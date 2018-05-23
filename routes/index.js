@@ -1,21 +1,19 @@
-const express        = require('express');
-const passport       = require('passport');
-const keys           = require('../config/keys');
-const stripe         = require('stripe')(keys.stripeSK);
-const requireLogin   = require('../middlewares/require_login');
-const router         = express.Router();
+const express = require('express');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const keys = require('../config/keys');
+const stripe = require('stripe')(keys.stripeSK);
+const requireLogin = require('../middlewares/require_login');
+const router = express.Router();
+const User = mongoose.model('users');
 
 /********************************************
 /API Routes
 ********************************************/
-router.get('/', (req, res ) => {
-  res.render('index', { title: 'React Campaign Homepage API' });
-});
-
-router.get( '/current_user', async (req, res) => {
+router.get('/current_user', async (req, res) => {
   try {
     const user = await req.user;
-    res.status(200).send(req.user);
+    res.status(200).send(user);
   } catch (err) {
     res.send(err);
   }

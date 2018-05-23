@@ -14,7 +14,7 @@ class Header extends Component {
     const { user, toggleSidebar } = this.props
     switch (user) {
       case null:
-        return <div>loading...</div>
+        return null;
       case false:
         return <a href='/auth/google' className='sign_in'>Signin with Google</a>
       default:

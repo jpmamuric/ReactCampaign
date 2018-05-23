@@ -42,7 +42,19 @@ passport.use(new GoogleStrategy({
           googleId: profile.id,
           googleName: profile.displayName,
           createdAt: createFormattedDate()
-         }).save();
+        })
+        .populate({
+          path: 'posts',
+          populate: {
+            path: 'comments',
+            model: 'comments',
+            populate: {
+              path: 'users',
+              models: 'users'
+            }
+          }
+        })
+        .save();
         done(null, user);
       }
     }

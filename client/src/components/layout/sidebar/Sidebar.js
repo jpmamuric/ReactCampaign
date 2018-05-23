@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 import './Sidebar.css';
 import Backdrop from '../../ui/backdrop/Backdrop';
@@ -27,6 +27,7 @@ const Sidebar = ({ sidebar, toggleSidebar, user }) => {
           )}
           <ul className='sidebar-list' onClick={()=>toggleSidebar(false)}>
             <NavLink exact to='/dashboard' className="sidebar-items">Home</NavLink>
+            <NavLink exact to='/forum' className="sidebar-items">Forum</NavLink>
             <a className="sidebar-items" href='/api/logout'>Signout</a>
           </ul>
         </nav>

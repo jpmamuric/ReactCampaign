@@ -9,14 +9,22 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
-
+// INITIALIZE MODELS
 require('./models/user');
 require('./models/surveys');
+require('./models/posts');
+require('./models/comments');
+
+//INITIALIZE SERVICES
 require('./services/passport');
+
+// INITIALIZE ROUTES
 const index = require('./routes/index');
 const surveyRoute = require('./routes/survey');
-const authRoute   = require('./routes/auth');
+const authRoute = require('./routes/auth');
+const postRoute = require('./routes/post');
 
+// INITIALIZE MONGOOSE
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI, {
   useMongoClient: true
@@ -24,12 +32,8 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// MIDDLEWARE
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -45,9 +49,11 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
 app.use('/api/surveys', surveyRoute);
+app.use('/api/posts', postRoute);
 app.use('/auth', authRoute);
 
 
+// ROUTING
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res)=>{
@@ -56,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-
+// ERROR HANDLING
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');

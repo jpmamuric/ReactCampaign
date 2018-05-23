@@ -1,14 +1,14 @@
-const express        = require('express');
-const _              = require('lodash');
-const Path           = require('path-parser');
-const { URL }        = require('url');
-const mongoose       = require('mongoose');
-const requireLogin   = require('../middlewares/require_login');
+const express = require('express');
+const _ = require('lodash');
+const Path = require('path-parser');
+const { URL } = require('url');
+const mongoose = require('mongoose');
+const requireLogin = require('../middlewares/require_login');
 const requireCredits = require('../middlewares/require_credits');
-const Mailer         = require('../services/mailer');
+const Mailer = require('../services/mailer');
 const surveyTemplate = require('../services/templates/template_survey')
-const Survey         = mongoose.model('surveys');
-const router         = express.Router();
+const Survey = mongoose.model('surveys');
+const router = express.Router();
 
 
 /********************************************
@@ -60,7 +60,7 @@ router.delete('/:surveyId', requireLogin, async (req, res, next) => {
       .select({ recipients: false });
 
     res.status(200).send(surveys);
-  } 
+  }
   catch (err) {
     res.status(422).send({ message: 'unable to delete survey', error: err.message });
   }
