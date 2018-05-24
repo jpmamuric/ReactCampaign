@@ -6,8 +6,8 @@ import * as actions from '../../../redux/actions/post';
 class PostForm extends Component {
   handleOnSubmit(e){
     e.preventDefault();
-    const { title, content } = this.props;
-    console.log(title, content);
+    const { title, content, submitPost } = this.props;
+    submitPost( title, content );
   }
 
   render() {
@@ -16,7 +16,7 @@ class PostForm extends Component {
       <form onSubmit={e=>this.handleOnSubmit(e)}>
         <input value={title} onChange={e=>changeInputTitle(e.target.value)}/>
         <input value={content} onChange={e=>changeInputContent(e.target.value)}/>
-        <button type='submit'>Submite</button>
+        <button type='submit'>Submit</button>
       </form>
     );
   }
