@@ -4,13 +4,14 @@ const router = express.Router();
 const Post = mongoose.model('posts');
 
 router.get('/:postId', async (req, res, next) => {
-
+  const { postId } = req.params;
+  const post = await Post.findOne({ _id: postId });
   try {
-    res.status(200).send({ message: 'posts retrieved', })
+    res.status(200).send({ message: 'posts retrieved', post });
   }
 
   catch (err) {
-    res.status(200).send({ message: 'unable to fetch posts', err });
+    res.status(422).send({ message: 'unable to fetch posts', err });
   }
 });
 
@@ -28,7 +29,7 @@ router.post('/:userId', async (req, res, next) => {
       { _id: userId },
       { $push: { posts: savedPost }},
       { new: true }
-    );
+    ).populate('posts');
 
     res.status(200).send({ message: 'post saved', updatedUser });
   }

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './CRUD.css';
-import * as actions from '../../../actions/survey';
+import * as actions from '../../../../redux/actions/survey';
 
 class EditSurvey extends Component {
   componentDidMount() {

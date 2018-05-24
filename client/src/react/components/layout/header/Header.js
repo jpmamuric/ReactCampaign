@@ -4,8 +4,8 @@ import { Link }            from 'react-router-dom';
 
 // import StripePayments      from './Payments';
 import './Header.css';
-import menu from '../../../assets/menu.png';
-import * as actions from '../../../actions/layout';
+import menu from '../../../../assets/menu.png';
+import * as actions from '../../../../redux/actions/layout';
 
 
 class Header extends Component {

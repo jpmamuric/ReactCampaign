@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
 import SurveyItem from './SurveyItem';
-import * as actions    from '../../actions/survey';
+import * as actions    from '../../../redux/actions/survey';
 import './Survey.css';
 
 class SurveyList extends Component {

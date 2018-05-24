@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './Payments.css';
 import Payments from './Payments';
-import * as actions from '../../actions/payments';
+import * as actions from '../../../redux/actions/payments';
 
 const PaymentsPrompt = ({ hasCredits, skipPayments, user }) => (
   <div className='prompt-container'>

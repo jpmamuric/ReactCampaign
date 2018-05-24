@@ -5,7 +5,7 @@ import { Link, Redirect }    from 'react-router-dom';
 import SurveyList from '../../surveys/SurveyList';
 import Modal from '../../ui/modal/Modal';
 import PaymentsPrompt from '../../payments/PaymentsPrompt';
-import * as actions from '../../../actions/payments';
+import * as actions from '../../../../redux/actions/payments';
 
 import'./Dashboard.css'
 

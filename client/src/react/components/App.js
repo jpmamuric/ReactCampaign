@@ -1,7 +1,7 @@
 import React, { Component }     from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect }              from 'react-redux';
-import * as actions             from '../actions/auth';
+import * as actions             from '../../redux/actions/auth';
 import Layout                   from './layout/Layout';
 import LandingPage              from './pages/landing/Landing';
 import DashboardPage            from './pages/dashboard/Dashboard';

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import landingImg from '../../../assets/emails.png';
+import landingImg from '../../../../assets/emails.png';
 import './Landing.css';
 
 const Landing = ({ user }) => {

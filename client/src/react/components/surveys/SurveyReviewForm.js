@@ -2,7 +2,7 @@ import React          from 'react';
 import { connect }    from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as actions from '../../actions/survey';
+import * as actions from '../../../redux/actions/survey';
 import formFields   from './form_fields';
 import './Survey.css';
 

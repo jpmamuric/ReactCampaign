@@ -1,10 +1,11 @@
 import React from 'react';
 
 import './Forum.css';
+import PostForm from '../../posts/PostForm';
 
 const Posts = () => (
   <div>
-    Forum Page
+    <PostForm />
   </div>
 );
 

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 import Backdrop from '../../ui/backdrop/Backdrop';
 import Payments from '../../payments/Payments';
-import * as actions from '../../../actions/layout';
+import * as actions from '../../../../redux/actions/layout';
 
 const Sidebar = ({ sidebar, toggleSidebar, user }) => {
   return (

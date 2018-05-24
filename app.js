@@ -23,6 +23,7 @@ const index = require('./routes/index');
 const surveyRoute = require('./routes/survey');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
+const commentRoute = require('./routes/comment');
 
 // INITIALIZE MONGOOSE
 mongoose.Promise = global.Promise;
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
 app.use('/api/surveys', surveyRoute);
 app.use('/api/posts', postRoute);
+app.use('/api/comments', commentRoute);
 app.use('/auth', authRoute);
 
 
