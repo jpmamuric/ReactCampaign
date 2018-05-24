@@ -12,16 +12,18 @@ const userSchema = new Schema({
   }]
 });
 
-userSchema.pre('remove', async function(next){
-  //load through initialized model to avoid syncronous require errors
-  const Posts = mongoose.model('posts');
-  try {
-    await Post.remove({ _id: { $in: this.posts } });
-    next();
-  }
-  catch(err) {
-    next(err);
-  }  
-});
+// userSchema.pre('remove', async function(next){
+//   //load through initialized model to avoid syncronous require errors
+//   const Posts = mongoose.model('posts');
+//   const Survey = mongoose.model('surveys');
+//   try {
+//     await Post.remove({ _id: { $in: this.posts } });
+//     await Survey.remove({ _user: this._id });
+//     return next();
+//   }
+//   catch(err) {
+//     return next(err);
+//   }
+// });
 
 mongoose.model('users', userSchema);

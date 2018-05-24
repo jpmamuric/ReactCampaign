@@ -14,7 +14,7 @@ const router = express.Router();
 /********************************************
 SURVEY GET
 ********************************************/
-router.get('/', requireLogin, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const surveys = await Survey.find({ _user: req.user.id })
       .select({ recipients: false });

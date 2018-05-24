@@ -20,6 +20,7 @@ require('./services/passport');
 
 // INITIALIZE ROUTES
 const index = require('./routes/index');
+const stripeRoute = require('./routes/stripe');
 const surveyRoute = require('./routes/survey');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
@@ -49,6 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
+app.use('/api/stripe', stripeRoute );
 app.use('/api/surveys', surveyRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/comments', commentRoute);

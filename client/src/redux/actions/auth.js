@@ -6,9 +6,20 @@ export const fetchUser = () => async dispatch => {
   dispatch({ type: types.FETCH_USER, payload: res.data });
 };
 
-export const authenticateUser = (history) => dispatch => {
+export const authenticateUser = history => dispatch => {
   history.push('/dashboard');
 };
+
+// export const deleteAccount = history => async dispatch => {
+//   try {
+//     const res = await axios.delete(`/api/delete_account`);
+//     dispatch({ type: types.FETCH_USER, payload: res.data });
+//     history.push('/');
+//   } catch (err) {
+//
+//   }
+//
+// }
 
 // export const es6fetchUser = () => dispatch => {
 //   axios.get('/api/current_user')

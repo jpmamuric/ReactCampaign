@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import './Sidebar.css';
 import Backdrop from '../../ui/backdrop/Backdrop';
 import Payments from '../../payments/Payments';
-import * as actions from '../../../../redux/actions/layout';
+import { toggleSidebar } from '../../../../redux/actions/layout';
 
-const Sidebar = ({ sidebar, toggleSidebar, user }) => {
+const Sidebar = ({ sidebar, toggleSidebar, user, history }) => {
   return (
     <div className=''>
       <Backdrop open={sidebar} close={()=>toggleSidebar(false)}/>
@@ -31,6 +32,7 @@ const Sidebar = ({ sidebar, toggleSidebar, user }) => {
             <a className="sidebar-items" href='/api/logout'>Signout</a>
           </ul>
         </nav>
+        <button className='sidebar-items-delete'> delete account </button>
       </div>
     </div>
   )
@@ -42,4 +44,4 @@ export const mapStateToProps = ({ layout, auth }) => {
   return { sidebar, user };
 }
 
-export default connect(mapStateToProps, actions )(Sidebar);
+export default connect(mapStateToProps, { toggleSidebar })(withRouter(Sidebar));

@@ -8,6 +8,9 @@
   z-index: 500;
   background-color: #fff;
   transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (min-width: 37.5em) {
@@ -63,6 +66,14 @@
 .sidebar-items:link,
 .sidebar-items:visited {
   color: #000;
+}
+
+.sidebar-items-delete {
+  cursor: pointer;
+  background-color: orangered;
+  font-size: 1.5rem;
+  border: none;
+  padding: 1rem 2rem;
 }
 
 /*********************************

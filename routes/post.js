@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const Post = mongoose.model('posts');
 
+/********************************************
+GET
+********************************************/
 router.get('/:postId', async (req, res, next) => {
   const { postId } = req.params;
   const post = await Post.findOne({ _id: postId });
@@ -15,6 +18,9 @@ router.get('/:postId', async (req, res, next) => {
   }
 });
 
+/********************************************
+POST
+********************************************/
 router.post('/:userId', async (req, res, next) => {
   const User = mongoose.model('users');
   const { title, content } = req.body;
