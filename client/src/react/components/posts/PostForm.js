@@ -2,29 +2,44 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../../redux/actions/post';
+import './Posts.css';
 
 class PostForm extends Component {
-  handleOnSubmit(e){
+  handleOnSubmit = e => {
     e.preventDefault();
-    const { title, content, submitPost } = this.props;
-    submitPost( title, content );
+    const { title, content, submitPost, auth } = this.props;
+    submitPost( title, content, auth.user._id );
   }
 
   render() {
-    const { changeInputTitle, changeInputContent, title, content } = this.props;
+    const { changeInputTitle, changeInputContent, title, content, err } = this.props;
     return (
-      <form onSubmit={e=>this.handleOnSubmit(e)}>
-        <input value={title} onChange={e=>changeInputTitle(e.target.value)}/>
-        <input value={content} onChange={e=>changeInputContent(e.target.value)}/>
-        <button type='submit'>Submit</button>
-      </form>
+      <div className='post-form-container'>
+        <form onSubmit={this.handleOnSubmit} className='post-form'>
+          <input
+            value={title}
+             onChange={e=>changeInputTitle(e.target.value)}
+             required
+             placeholder='Title'
+             className='post-form-input'/>
+          <textarea
+             value={content}
+             onChange={e=>changeInputContent(e.target.value)}
+             required
+             placeholder='Whats on your mind?'
+             className='post-form-textarea'>
+           </textarea>
+          <button type='submit' className='post-form-btn-submit'>Submit</button>
+          { err !== '' ? <div className='post-form-err'>{err}</div> : null }
+        </form>
+      </div>
     );
   }
 }
 
-const mapStateToProps = ({ post }) => {
-  const { title, content } = post;
-  return { title, content };
+const mapStateToProps = ({ post, auth }) => {
+  const { title, content, err } = post;
+  return { title, content, auth, err };
 }
 
 export default connect(mapStateToProps, actions)(PostForm);

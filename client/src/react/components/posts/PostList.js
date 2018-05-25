@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PostItem from './PostItem';
+import './Posts.css'
 
 class PostList extends Component {
-  renderList(){
-    if(this.props.list.length === 0) {
+  renderList(user){
+    if( user.posts.length === 0) {
       return <div> No Posts...</div>
     }
 
-    return this.props.list.map(item => <PostItem key={item.title} post={item}/> );
+    return user.posts.map(item => <PostItem key={item._id} post={item}/> );
   }
 
   render(){
+    const { user } = this.props;
+    if(!user) {
+      return <div>loading...</div>
+    }
     return (
-      <div>
-        { this.renderList() }
+      <div className='post-list-container'>
+        { this.renderList(user) }
       </div>
     )
   }
 }
-const mapStateToProps = ({ post }) => ({ list: post.list });
+const mapStateToProps = ({ auth }) => ({ user: auth.user });
 
 export default connect(mapStateToProps)(PostList);

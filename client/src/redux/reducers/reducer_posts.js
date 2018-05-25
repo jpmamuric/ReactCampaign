@@ -22,9 +22,9 @@ export default (state = initialState, action) => {
     case types.SUBMIT_POST_SUCCESS:
       return {
         ...state,
-        list: state.list.concat(action.payload),
         title: '',
-        content: ''
+        content: '',
+        err: ''
       };
     case types.SUBMIT_POST_FAIL:
       return {

@@ -27,7 +27,7 @@ router.post('/:userId', async (req, res, next) => {
   const { userId } = req.params;
   try {
 
-    const post = new Post({ title, content });
+    const post = new Post({ title, content, user: userId });
 
     const savedPost = await post.save();
 
@@ -36,6 +36,7 @@ router.post('/:userId', async (req, res, next) => {
       { $push: { posts: savedPost }},
       { new: true }
     ).populate('posts');
+    console.log(updatedUser)
 
     res.status(200).send({ message: 'post saved', updatedUser });
   }
