@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { loadPosts } from '../../../redux/actions/post';
 import PostItem from './PostItem';
 import './Posts.css'
 
 class PostList extends Component {
-  renderList(user){
-    if( user.posts.length === 0) {
-      return <div> No Posts...</div>
+  componentDidMount() {
+    this.props.loadPosts();
+  }
+
+  renderList(list){
+    if( list.length === 0) {
+      return <div className='post-list-container'> No Posts...</div>
     }
 
-    return user.posts.map(item => <PostItem key={item._id} post={item}/> );
+    return list.map(item => <PostItem key={item._id} post={item}/> );
   }
 
   render(){
-    const { user } = this.props;
-    if(!user) {
+    const { list } = this.props;
+    if(!list) {
       return <div>loading...</div>
     }
     return (
       <div className='post-list-container'>
-        { this.renderList(user) }
+        { this.renderList(list) }
       </div>
     )
   }
 }
-const mapStateToProps = ({ auth }) => ({ user: auth.user });
+const mapStateToProps = ({ post}) => ({ list: post.list });
 
-export default connect(mapStateToProps)(PostList);
+export default connect(mapStateToProps, { loadPosts })(PostList);

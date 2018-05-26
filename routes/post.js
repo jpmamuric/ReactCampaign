@@ -6,6 +6,15 @@ const Post = mongoose.model('posts');
 /********************************************
 GET
 ********************************************/
+router.get('/', async (req, res) => {
+  try {
+    const posts = await Post.find({ user: req.user.id }).populate('comments');
+    res.status(200).send(posts);
+  } catch (err) {
+    res.status(422).send({ message: 'unable to get posts', err });
+  }
+});
+
 router.get('/:postId', async (req, res, next) => {
   const { postId } = req.params;
   const post = await Post.findOne({ _id: postId });
@@ -14,7 +23,7 @@ router.get('/:postId', async (req, res, next) => {
   }
 
   catch (err) {
-    res.status(422).send({ message: 'unable to fetch posts', err });
+    res.status(422).send({ message: 'unable to get posts', err });
   }
 });
 

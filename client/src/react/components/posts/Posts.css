@@ -57,12 +57,20 @@ POST FORM
 POST LIST
 ******************************/
 .post-list-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin-top: 1rem;
+  font-size: 1.5rem;
 }
 
 /******************************
 POST ITEM
 ******************************/
+.post-item-container {
+
+}
+
 .post-item {
   cursor: pointer;
   display: flex;
@@ -74,6 +82,16 @@ POST ITEM
   background-color: white;
   box-shadow: 0 1rem 2rem rgba(0,0,0, .15);
   transition: all .2s;
+}
+
+@media (min-width: 37.5em){
+  .post-item {
+
+  }
+
+  .post-item-container {
+
+  }
 }
 
 .post-item:hover {

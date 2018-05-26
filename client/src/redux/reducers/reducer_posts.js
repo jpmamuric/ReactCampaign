@@ -19,9 +19,15 @@ export default (state = initialState, action) => {
         ...state,
         content: action.payload
       };
+    case types.LOAD_POSTS:
+      return {
+        ...state,
+        list: action.payload
+      };
     case types.SUBMIT_POST_SUCCESS:
       return {
         ...state,
+        list: action.payload,
         title: '',
         content: '',
         err: ''

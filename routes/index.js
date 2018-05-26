@@ -9,7 +9,7 @@ const User = mongoose.model('users');
 router.get('/current_user', async (req, res) => {
   try {
     // const user = await User.findOne({ _id: req.user.id }).populate('posts');
-    const user = req.user;
+    let user = req.user;
     res.status(200).send(user);
   } catch (err) {
     res.send(err);
