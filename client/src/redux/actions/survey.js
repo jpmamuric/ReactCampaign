@@ -7,19 +7,19 @@ export const submitSurvey = (values, history) => async dispatch => {
   history.push('/dashboard');
 }
 
-export const fetchSurveys = () => async dispatch => {
-  const res = await axios.get('/api/surveys');
+export const fetchSurveys = userId  => async dispatch => {
+  const res = await axios.get(`/api/surveys`);
   dispatch({ type: types.FETCH_SURVEYS, payload: res.data });
 }
 
-export const fetchSurvey = id => async dispatch => {
-  const res = await axios.get(`/api/surveys/${id}`);
+export const fetchSurvey = userId => async dispatch => {
+  const res = await axios.get(`/api/surveys/${userId}`);
   dispatch({ type: types.FETCH_SURVEY, payload: res.data });
 }
 
-export const deleteSurvey = (id, history) => async dispatch => {
+export const deleteSurvey = (userId, history) => async dispatch => {
   try {
-    const res = await axios.delete(`/api/surveys/${id}`);
+    const res = await axios.delete(`/api/surveys/${userId}`);
       dispatch({ type: types.DELETE_SURVEY_SUCCESS });
       dispatch({ type: types.FETCH_SURVEYS, payload: res.data });
       history.push('/dashboard');
