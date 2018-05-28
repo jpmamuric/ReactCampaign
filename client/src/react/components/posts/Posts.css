@@ -84,14 +84,10 @@ POST ITEM
   transition: all .2s;
 }
 
-@media (min-width: 37.5em){
-  .post-item {
-
-  }
-
-  .post-item-container {
-
-  }
+.post-item:link,
+.post-item:visited {
+  text-decoration: none;
+  color: #000;
 }
 
 .post-item:hover {
@@ -111,4 +107,61 @@ POST ITEM
 
 .post-item-content {
   font-size: 1.5rem;
+}
+
+/******************************
+POST EDIT
+******************************/
+.post-edit-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post-edit-box {
+  background-color: white;
+  border-radius: 3px;
+  padding: 1rem;
+  margin: .5rem;
+  font-size: 1.5rem;
+  width: 50vw;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1rem 2rem rgba(0,0,0, .15);
+}
+
+.post-edit-btns {
+  display: block;
+}
+
+.post-edit-btn {
+  border: none;
+  padding: 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  min-width: 7rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.post-edit-btn-update {
+  background-color: #eee;
+}
+
+.post-edit-btn-delete {
+  background-color: rgb(251, 55, 55);
+}
+
+/******************************
+MEDIA QUIERIES
+******************************/
+@media (max-width: 37.5em) {
+  .post-edit-box {
+    width: 90vw;
+    height: 70vh;
+  }
+
 }

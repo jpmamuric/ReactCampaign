@@ -8,12 +8,14 @@ export const DELETE_SURVEY_FAIL     = 'DELETE_SURVEY_FAIL';
 export const FETCH_USER             = 'FETCH_USER';
 export const USER_SKIP_CREDITS      = 'USER_SKIP_CREDITS';
 
-export const TOGGLE_BACKDROP        = 'TOGGLE_BACKDROP';
+export const TOGGLE_MODAL           = 'TOGGLE_MODAL';
 export const TOGGLE_SIDEBAR         = 'TOGGLE_SIDEBAR';
-
 
 export const INPUT_CHANGE_POST_TITLE = 'INPUT_CHANGE_POST_TITLE';
 export const INPUT_CHANGE_POST_CONTENT = 'INPUT_CHANGE_POST_CONTENT'
+
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SUBMIT_POST_SUCCESS = 'SUBMIT_POST_SUCCESS';
 export const SUBMIT_POST_FAIL = 'SUBMIT_POST_FAIL';
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+export const GET_POST_FAIL = 'GET_POST_FAIL';

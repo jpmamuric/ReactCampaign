@@ -1,6 +1,6 @@
 import * as types from './types'
 
-export const toggleBackdrop =  isOpen => ({ type: types.TOGGLE_BACKDROP, payload: isOpen });
+export const toggleModal =  isOpen => ({ type: types.TOGGLE_MODAL, payload: isOpen });
 
 export const toggleSidebar = isOpen => ({ type: types.TOGGLE_SIDEBAR, payload: isOpen });
 

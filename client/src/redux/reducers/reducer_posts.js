@@ -1,6 +1,7 @@
 import * as types from '../actions/types';
 
 const initialState = {
+  item: null,
   list: [],
   title: '',
   content: '',
@@ -36,6 +37,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         err: action.payload
+      };
+    case types.GET_POST_SUCCESS:
+      return {
+        ...state,
+        item: action.payload
       };
     default:
       return state;

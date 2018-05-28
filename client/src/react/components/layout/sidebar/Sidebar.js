@@ -28,7 +28,7 @@ const Sidebar = ({ sidebar, toggleSidebar, user, history }) => {
           )}
           <ul className='sidebar-list' onClick={()=>toggleSidebar(false)}>
             <NavLink exact to='/dashboard' className="sidebar-items">Home</NavLink>
-            <NavLink exact to='/forum' className="sidebar-items">Forum</NavLink>
+            <NavLink exact to='/notes' className="sidebar-items">Notes</NavLink>
             <a className="sidebar-items" href='/api/logout'>Signout</a>
           </ul>
         </nav>

@@ -31,3 +31,13 @@ export const submitPost = (title, content, id) => async dispatch => {
   }
 
 }
+
+export const getPost = postId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/posts/${postId}`);
+    dispatch({ type: types.GET_POST_SUCCESS, payload: res.data.post });
+  }
+  catch(err){
+    dispatch({ type: types.GET_POST_FAIL })
+  }
+}
