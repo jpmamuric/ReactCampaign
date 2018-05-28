@@ -41,3 +41,13 @@ export const getPost = postId => async dispatch => {
     dispatch({ type: types.GET_POST_FAIL })
   }
 }
+
+export const deletePost = postId => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/posts/${postId}`);
+    dispatch({ type: types.DELETE_POST_SUCCESS, payload: res.data });
+  }
+  catch(err){
+    dispatch({ type: types.DELETE_POST_FAIL });
+  }
+}
