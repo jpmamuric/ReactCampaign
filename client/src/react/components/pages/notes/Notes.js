@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom' ;
 import { connect } from 'react-redux';
 
 import './Notes.css';
 import PostForm from '../../posts/PostForm';
 import PostList from '../../posts/PostList';
+import Modal from '../../ui/modal/Modal';
+import PostEdit from '../../posts/PostEdit';
 
-const Posts = ({ modal, id }) => (
-  <div>
-    <PostForm />
-    <PostList />
-  </div>
-);
+import { toggleModal } from '../../../../redux/actions/layout';
 
-const mapStateToProps = ({ layout, post }) => {
-  const { modal } = layout;
-  const { id } = post
-  return { modal, id };
-};
+class Posts extends Component {
+  closeAndGoBack(){
+    this.props.toggleModal(false);
+    this.props.history.goBack();
+  }
 
-export default connect(mapStateToProps)(Posts);
+  render(){
+    return (
+      <div>
+        <Modal open={this.props.modal} close={()=>this.closeAndGoBack()}>
+            <Route path={this.props.match.url + '/:id'} exact component={PostEdit}/>
+        </Modal>
+        <PostForm />
+        <PostList />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = ({ layout: { modal } }) => ({ modal });
+
+export default connect(mapStateToProps,{ toggleModal })(Posts);

@@ -1,5 +1,5 @@
 import React, { Component }     from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect }              from 'react-redux';
 import * as actions             from '../../redux/actions/auth';
 import Layout                   from './layout/Layout';
@@ -8,7 +8,7 @@ import DashboardPage            from './pages/dashboard/Dashboard';
 import CreateSurveyPage         from './pages/survey/CreateSurvey';
 import EditSurveyPage           from './pages/survey/EditSurvey';
 import NotesPage                from './pages/notes/Notes';
-import PostEdit                 from './posts/PostEdit';
+import NotFoundPage             from './pages/notfound/NotFound';
 
 class App extends Component {
   componentDidMount(){
@@ -20,12 +20,13 @@ class App extends Component {
         <BrowserRouter>
           <Layout>
             <Switch>
-              <Route exact path='/' component={LandingPage}/>
               <Route exact path='/dashboard' component={DashboardPage}/>
               <Route exact path="/dashboard/new-survey" component={CreateSurveyPage} />
-              <Route path='/dashboard/:id' component={EditSurveyPage}/>
-              <Route exact path='/notes' component={NotesPage} />
-              <Route path='/notes/:id' component={PostEdit} />
+              <Route exact path='/dashboard/edit/:id' component={EditSurveyPage}/>
+              <Route path='/notes' component={NotesPage} />
+              <Route exact path='/' component={LandingPage}/>
+              <Route exact path='/notfound' component={NotFoundPage} />
+              <Redirect to='/notfound' />
             </Switch>
           </Layout>
         </BrowserRouter>

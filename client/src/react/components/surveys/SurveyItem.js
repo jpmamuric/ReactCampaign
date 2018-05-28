@@ -6,7 +6,7 @@ import './Survey.css';
 const SurveyItem = ({ survey }) => {
   const { title, body, dateSent, respondedYes, respondedNo, _id } = survey;
   return (
-    <Link className='survey-item' to={`/dashboard/${_id}`}>
+    <Link className='survey-item' to={`/dashboard/edit/${_id}`}>
         <div className='survey-content'>
           <div className='survey-title'>{title}</div>
           <p className='survey-body'>{body}</p>
