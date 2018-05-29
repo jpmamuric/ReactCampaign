@@ -42,12 +42,22 @@ export const getPost = postId => async dispatch => {
   }
 }
 
-export const deletePost = postId => async dispatch => {
+export const deletePost = (postId, history) => async dispatch => {
   try {
-    const res = await axios.delete(`/api/posts/${postId}`);
-    dispatch({ type: types.DELETE_POST_SUCCESS, payload: res.data });
-  }
-  catch(err){
+    await axios.delete(`/api/posts/${postId}`);
+    const posts = await fetchPosts();
+    dispatch({ type: types.LOAD_POSTS, payload: posts });
+    dispatch({ type: types.TOGGLE_MODAL, payload: false });
+    history.push('/notes');
+  } catch(err){
     dispatch({ type: types.DELETE_POST_FAIL });
+  }
+}
+
+export const editPost = (postId, postData) => async dispatch => {
+  try {
+
+  } catch (err) {
+    
   }
 }

@@ -43,6 +43,11 @@ export default (state = initialState, action) => {
         ...state,
         item: action.payload
       };
+    case types.DELETE_POST_FAIL:
+      return {
+        ...state,
+        err: action.payload
+      };
     default:
       return state;
   }

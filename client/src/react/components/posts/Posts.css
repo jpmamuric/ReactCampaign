@@ -59,6 +59,7 @@ POST LIST
 .post-list-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin-top: 1rem;
   font-size: 1.5rem;
@@ -156,6 +157,10 @@ POST EDIT
 MEDIA QUIERIES
 ******************************/
 @media (max-width: 37.5em) {
+  .post-item {
+    width: 85vw;
+  }
+
   .post-edit-box {
     min-height: 70vh;
   }

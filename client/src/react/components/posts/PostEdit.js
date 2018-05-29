@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Posts.css';
-import { getPost } from '../../../redux/actions/post';
+import { getPost, deletePost } from '../../../redux/actions/post';
 import { toggleModal } from '../../../redux/actions/layout';
 
 class PostEdit extends Component {
@@ -21,9 +21,8 @@ class PostEdit extends Component {
       return <div>Loading ... </div>
     }
 
-    // use id for delete _id
-
-    const { title, content, likes  } = this.props.post.item;
+    const { title, content, likes, _id } = this.props.post.item;
+    const { deletePost, history } = this.props;
 
     return (
       <div className='post-edit-box'>
@@ -40,7 +39,7 @@ class PostEdit extends Component {
             Cancel
           </button>
           <button className='post-edit-btn post-edit-btn-update'>Edit</button>
-          <button className='post-edit-btn post-edit-btn-delete'>Delete</button>
+          <button className='post-edit-btn post-edit-btn-delete' onClick={()=>deletePost(_id, history)}>Delete</button>
         </div>
 
       </div>
@@ -62,7 +61,14 @@ class PostEdit extends Component {
 
 const mapStateToProps = ({ post, layout: { modal } }) => ({ post, modal });
 
-export default connect(mapStateToProps, { getPost, toggleModal })(PostEdit);
+export default connect(
+  mapStateToProps,
+  {
+    getPost,
+    toggleModal,
+    deletePost
+  }
+)(withRouter(PostEdit));
 
 // shouldComponentUpdate(nextProps){
 //   if(this.props.post.item._id === nextProps.post.item._id){

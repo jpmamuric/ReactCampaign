@@ -24,4 +24,19 @@ const PostSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+
+PostSchema.pre('remove', async function(next) {
+  const User = mongoose.model('users');
+  try {
+    await User.update(
+      { _id: this.user },
+      { $pull: { posts: this._id } }
+    );
+    return next();
+  } catch(err){
+    return next(err);
+  }
+});
+
+
 mongoose.model('posts', PostSchema);
