@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Posts.css';
+import PostEditForm from './form/PostEditForm';
 import { getPost, deletePost, editingPost } from '../../../redux/actions/post';
 import { toggleModal } from '../../../redux/actions/layout';
 
@@ -31,20 +32,15 @@ class PostEdit extends Component {
     const { title, content, likes, _id } = item;
 
     let Form = (
-      <div>
+      <div >
         <h1>{title}</h1>
-        <p>{content}</p>
+        <p className='post-edit-content'>{content}</p>
         <div>likes: {likes}</div>
       </div>
     );
 
     if(this.props.post.editing) {
-      Form = (
-        <form onSubmit={this.onHandleEditSubmit}>
-          Edit Form
-          <button>Submit</button>
-        </form>
-      );
+      Form = <PostEditForm post={post.item}/>
     }
 
     return (
@@ -59,7 +55,7 @@ class PostEdit extends Component {
           <button
             className='post-edit-btn post-edit-btn-update'
             onClick={()=>editingPost(!this.props.post.editing)}>
-          { !editing ? 'Edit' : 'Finish Editing' }
+          { !editing ? 'Edit' : 'Cancel Edit' }
           </button>
           <button
             className='post-edit-btn post-edit-btn-delete'

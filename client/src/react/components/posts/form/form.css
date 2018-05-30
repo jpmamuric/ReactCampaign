@@ -1,0 +1,131 @@
+/******************************
+POST FORM
+******************************/
+.post-form-container,
+.post-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: .5rem;
+  transition: all .2s;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  transition: all .2s;
+}
+
+.post-form-textarea {
+  min-height: 10rem;
+}
+
+
+.post-form-input,
+.post-form-textarea,
+.post-form-btn-submit {
+  border: none;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+}
+
+.post-form-input {
+  border-bottom: 1px solid #eee;
+}
+
+.post-form-btn-submit {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+  /* align-self: center; */
+  background-color: var(--color-primary);
+}
+
+.post-form-err {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: rgb(226, 73, 73);
+}
+
+
+/******************************
+POST EDIT FORM
+******************************/
+.post-edit-form-container {
+  margin-bottom: 1.5rem;
+}
+
+.post-edit-form-textarea,
+.post-edit-form-input{
+  padding: .5rem;
+  border: none;
+  font-size: 2rem;
+  background-color: #eee;
+}
+
+.post-edit-form-textarea {
+  min-height: 30rem;
+  overflow: scroll;
+  width: 100%;
+}
+
+.post-edit-form-input {
+  margin-bottom: .3rem;
+}
+
+.post-edit-btn-submit {
+  padding: .5rem 1rem;
+  background-color: orangered;
+  width: 100%;
+  font-size: 1.5rem;
+  border: none;
+  display: block;
+}
+
+/******************************
+POST EDIT FIELD INPUT
+******************************/
+.post-field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-field-label {
+  max-height: 20rem;
+  overflow: scroll;
+}
+
+.post-field-err {
+  border: 1px solid rgb(223, 64, 42);
+}
+
+.post-field-text-err {
+  color: rgb(223, 64, 42);
+  margin-bottom: .5rem;
+}
+
+.post-field-err,
+.post-field-text-err {
+  outline: none;
+}
+/******************************
+MEDIA QUIERIES
+******************************/
+@media (max-width: 37.5em) {
+  .post-field-label {
+    max-height: 15rem;
+    overflow: scroll;
+  }
+
+  .post-edit-form-textarea {
+    min-height: 15rem;
+    overflow: scroll;
+    width: 100%;
+  }
+}

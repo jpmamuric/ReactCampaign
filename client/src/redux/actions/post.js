@@ -56,9 +56,11 @@ export const deletePost = (postId, history) => async dispatch => {
 
 export const editingPost= isEditing => ({ type: types.EDIT_POST, payload: isEditing });
 
-export const editPost = (postId, postData) => async dispatch => {
+export const editPostSubmit = (postId, postData, history) => async dispatch => {
   try {
-
+    console.log(postId, postData, history)
+    dispatch(editingPost(false));
+    history.push('/notes');
   } catch (err) {
 
   }

@@ -3,18 +3,18 @@ import { Route } from 'react-router-dom' ;
 import { connect } from 'react-redux';
 
 import './Notes.css';
-import PostForm from '../../posts/PostForm';
+import PostForm from '../../posts/form/PostForm';
 import PostList from '../../posts/PostList';
 import Modal from '../../ui/modal/Modal';
 import PostEdit from '../../posts/PostEdit';
 
 import { toggleModal } from '../../../../redux/actions/layout';
+import { editingPost } from  '../../../../redux/actions/post';
 
 class Posts extends Component {
-
-
   closeAndGoBack(){
     this.props.toggleModal(false);
+    this.props.editingPost(false);
     this.props.history.goBack();
   }
 
@@ -33,4 +33,4 @@ class Posts extends Component {
 
 const mapStateToProps = ({ layout: { modal } }) => ({ modal });
 
-export default connect(mapStateToProps,{ toggleModal })(Posts);
+export default connect(mapStateToProps,{ toggleModal, editingPost })(Posts);

@@ -1,14 +1,18 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../../redux/actions/post';
-import './Posts.css';
+import * as actions from '../../../../redux/actions/post';
+import './form.css';
 
 class PostForm extends Component {
   handleOnSubmit = e => {
     e.preventDefault();
     const { title, content, submitPost, auth } = this.props;
-    submitPost( title, content, auth.user._id );
+    if(title.length > 25) {
+      return null
+    } else {
+      submitPost( title, content, auth.user._id );
+    }
   }
 
   render() {
