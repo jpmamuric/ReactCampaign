@@ -57,11 +57,13 @@ export const deletePost = (postId, history) => async dispatch => {
 export const editingPost= isEditing => ({ type: types.EDIT_POST, payload: isEditing });
 
 export const editPostSubmit = (postId, postData, history) => async dispatch => {
+  console.log(postData)
   try {
-    console.log(postId, postData, history)
-    dispatch(editingPost(false));
+    await axios.put(`/api/posts/${postId}`, postData );
+    const posts = await fetchPosts();
+    dispatch({ type: types.LOAD_POSTS, payload: posts });
     history.push('/notes');
   } catch (err) {
-
+    dispatch({ type: types.EDIT_POST_FAIL, payload: 'unable to update' });
   }
 }

@@ -17,13 +17,12 @@ class PostEditForm extends Component {
   }
 
   render(){
-    const { title , content } = this.props.post;
     return (
       <form
-        className='post-edit-form-container' 
+        className='post-edit-form-container'
         onSubmit={this.props.handleSubmit(this.onEditSubmit)}>
-        <Field name='title' label={title} component={PostInputField} />
-        <Field name='content' label={content} component={PostTextareaField} />
+        <Field name='title'  component={PostInputField} />
+        <Field name='content' component={PostTextareaField} />
         <button className='post-edit-btn-submit' type='submit'>Submit</button>
       </form>
     )
@@ -35,4 +34,13 @@ const PostEditReduxForm = reduxForm({
   form: 'postForm'
 })(PostEditForm);
 
-export default connect(null, { editingPost, editPostSubmit })(withRouter(PostEditReduxForm));
+const mapStateToProps = ({ post: { item: { title, content } } }) => {
+  return {
+    initialValues: {
+      title,
+      content
+    }
+  }
+}
+
+export default connect(mapStateToProps, { editingPost, editPostSubmit })(withRouter(PostEditReduxForm));

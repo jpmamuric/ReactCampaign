@@ -54,6 +54,17 @@ export default (state = initialState, action) => {
         ...state,
         editing: action.payload
       };
+    case types.EDIT_POST_SUCCESS:
+      return {
+        ...state,
+        editing: false,
+        err: ''
+      }
+    case types.EDIT_POST_FAIL:
+      return {
+        ...state,
+        err: action.payload
+      };
     default:
       return state;
   }

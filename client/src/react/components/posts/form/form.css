@@ -70,7 +70,7 @@ POST EDIT FORM
 }
 
 .post-edit-form-textarea {
-  min-height: 30rem;
+  min-height: 40rem;
   overflow: scroll;
   width: 100%;
 }
@@ -81,7 +81,7 @@ POST EDIT FORM
 
 .post-edit-btn-submit {
   padding: .5rem 1rem;
-  background-color: orangered;
+  background-color: var(--color-primary);
   width: 100%;
   font-size: 1.5rem;
   border: none;
@@ -117,6 +117,12 @@ POST EDIT FIELD INPUT
 /******************************
 MEDIA QUIERIES
 ******************************/
+@media (max-width: 56.25em) {
+  .post-edit-form-textarea {
+    min-height: 15rem;
+  }
+}
+
 @media (max-width: 37.5em) {
   .post-field-label {
     max-height: 15rem;
@@ -124,8 +130,14 @@ MEDIA QUIERIES
   }
 
   .post-edit-form-textarea {
-    min-height: 15rem;
+    min-height: 35rem;
     overflow: scroll;
     width: 100%;
+  }
+}
+
+@media (max-width: 31.25em) {
+  .post-edit-form-textarea {
+    min-height: 40rem;
   }
 }

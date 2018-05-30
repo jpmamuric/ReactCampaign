@@ -14,10 +14,6 @@ POST LIST
 /******************************
 POST ITEM
 ******************************/
-.post-item-container {
-
-}
-
 .post-item {
   cursor: pointer;
   display: flex;
@@ -71,8 +67,9 @@ POST ITEM
 POST EDIT
 ******************************/
 .post-edit-content {
-  max-height: 25rem;
+  min-height: 40rem;
   overflow: scroll;
+  line-height: 1.7rem;
 }
 
 .post-edit-container{
@@ -115,13 +112,16 @@ POST EDIT
   background-color: rgb(251, 55, 55);
 }
 
-.post-edit-content {
-
-}
-
 /******************************
 MEDIA QUIERIES
 ******************************/
+@media (max-width: 56.25em) {
+  .post-edit-content {
+    min-height: 23rem;
+  }
+}
+
+
 @media (max-width: 37.5em) {
   .post-item {
     width: 85vw;
@@ -137,7 +137,13 @@ MEDIA QUIERIES
   }
 
   .post-edit-content {
-    max-height: 25rem;
+    max-height: 17rem;
   }
 
+}
+
+@media (max-width: 31.25em) {
+  .post-edit-content {
+    max-height: 30rem;
+  }
 }

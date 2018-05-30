@@ -67,13 +67,14 @@ router.delete('/:postId', async (req, res, next) => {
 
 router.put('/:postId', async (req, res, next) => {
   const { postId } = req.params;
+  const { title, content } = req.body;
 
   try {
-    let updatedpost = await Post.findOneAndUpdate(
-      { _id: postId }
-      // { $set: }
-    )
-    return res.status(200).send()
+    let updatedpost = await Post.update(
+      { _id: postId },
+      { $set: { title, content } }
+    );
+    return res.status(200).send(req.updatedpost);
   } catch (err) {
     return next(err);
   }

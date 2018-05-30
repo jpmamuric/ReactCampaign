@@ -15,6 +15,7 @@ class PostEdit extends Component {
   closeAndGoBack(){
     this.props.toggleModal(false);
     this.props.history.goBack();
+    this.props.editingPost(false);
   }
 
   onHandleEditSubmit = (e) => {
