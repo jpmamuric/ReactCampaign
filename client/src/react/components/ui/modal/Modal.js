@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 
 import './Modal.css';
 import Backdrop from '../backdrop/Backdrop';
 
 class Modal extends Component {
-  // shouldComponentUpdate(nextProps, nextState){
-  //   const { show } = this.props;
-  //   return nextProps.show !== show || nextProps.children !== this.props.children
-  // }
+  componentDidUpdate(nextProps){
+    if(this.props.location.pathname === '/notes' && this.props.open) {
+      this.props.close();
+    }
+  }
 
   render() {
     const { children, open, close } = this.props;
@@ -23,4 +25,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default withRouter(Modal);

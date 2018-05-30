@@ -5,7 +5,8 @@ const initialState = {
   list: [],
   title: '',
   content: '',
-  err: ''
+  err: '',
+  editing: false
 };
 
 export default (state = initialState, action) => {
@@ -47,6 +48,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         err: action.payload
+      };
+    case types.EDIT_POST:
+      return {
+        ...state,
+        editing: action.payload
       };
     default:
       return state;

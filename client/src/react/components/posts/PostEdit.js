@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Posts.css';
-import { getPost, deletePost } from '../../../redux/actions/post';
+import { getPost, deletePost, editingPost } from '../../../redux/actions/post';
 import { toggleModal } from '../../../redux/actions/layout';
 
 class PostEdit extends Component {
@@ -16,30 +16,56 @@ class PostEdit extends Component {
     this.props.history.goBack();
   }
 
+  onHandleEditSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit')
+  }
+
   renderPost(){
     if(!this.props.post.item) {
       return <div>Loading ... </div>
     }
 
-    const { title, content, likes, _id } = this.props.post.item;
-    const { deletePost, history } = this.props;
+    const { deletePost, history, editingPost, post } = this.props;
+    const { editing, item } = post;
+    const { title, content, likes, _id } = item;
+
+    let Form = (
+      <div>
+        <h1>{title}</h1>
+        <p>{content}</p>
+        <div>likes: {likes}</div>
+      </div>
+    );
+
+    if(this.props.post.editing) {
+      Form = (
+        <form onSubmit={this.onHandleEditSubmit}>
+          Edit Form
+          <button>Submit</button>
+        </form>
+      );
+    }
 
     return (
       <div className='post-edit-box'>
-        <div>
-          <h1>{title}</h1>
-          <p>{content}</p>
-          <div>likes: {likes}</div>
-        </div>
-
+        { Form }
         <div className='post-edit-btns'>
           <button
             onClick={()=>this.closeAndGoBack()}
             className='post-edit-btn'>
             Cancel
           </button>
-          <button className='post-edit-btn post-edit-btn-update'>Edit</button>
-          <button className='post-edit-btn post-edit-btn-delete' onClick={()=>deletePost(_id, history)}>Delete</button>
+          <button
+            className='post-edit-btn post-edit-btn-update'
+            onClick={()=>editingPost(!this.props.post.editing)}>
+          { !editing ? 'Edit' : 'Finish Editing' }
+          </button>
+          <button
+            className='post-edit-btn post-edit-btn-delete'
+            onClick={()=>deletePost(_id, history)}>
+            Delete
+          </button>
         </div>
 
       </div>
@@ -66,6 +92,7 @@ export default connect(
   {
     getPost,
     toggleModal,
+    editingPost,
     deletePost
   }
 )(withRouter(PostEdit));

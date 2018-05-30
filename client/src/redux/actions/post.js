@@ -54,10 +54,12 @@ export const deletePost = (postId, history) => async dispatch => {
   }
 }
 
+export const editingPost= isEditing => ({ type: types.EDIT_POST, payload: isEditing });
+
 export const editPost = (postId, postData) => async dispatch => {
   try {
 
   } catch (err) {
-    
+
   }
 }

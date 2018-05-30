@@ -11,6 +11,8 @@ import PostEdit from '../../posts/PostEdit';
 import { toggleModal } from '../../../../redux/actions/layout';
 
 class Posts extends Component {
+
+
   closeAndGoBack(){
     this.props.toggleModal(false);
     this.props.history.goBack();

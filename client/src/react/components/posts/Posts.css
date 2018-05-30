@@ -110,6 +110,17 @@ POST ITEM
   font-size: 1.5rem;
 }
 
+.post-item-like {
+  width: 3rem;
+  height: 3rem;
+  align-self: flex-end;
+  transition: all .2s;
+}
+
+.post-item-like:hover {
+  transform: scale(1.1);
+}
+
 /******************************
 POST EDIT
 ******************************/
