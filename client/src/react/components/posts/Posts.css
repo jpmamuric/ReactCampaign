@@ -53,8 +53,8 @@ POST ITEM
 }
 
 .post-item-like {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   align-self: flex-end;
   transition: all .2s;
 }
@@ -79,9 +79,20 @@ POST EDIT
   flex-direction: column;
 }
 
+.post-edit-like-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.post-item-like-number {
+  padding-left: 1rem;
+  font-size: 1.3em;
+}
+
 .post-edit-box {
   border-radius: 3px;
-  padding: 1rem;
   min-height: 50vh;
   font-size: 1.5rem;
   width: 100%;
@@ -91,7 +102,9 @@ POST EDIT
 }
 
 .post-edit-btns {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .post-edit-btn {

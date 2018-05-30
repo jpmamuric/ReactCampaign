@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Posts.css';
+import like from '../../../assets/like.png';
 import PostEditForm from './form/PostEditForm';
 import { getPost, deletePost, editingPost } from '../../../redux/actions/post';
 import { toggleModal } from '../../../redux/actions/layout';
@@ -35,8 +36,12 @@ class PostEdit extends Component {
     let Form = (
       <div >
         <h1>{title}</h1>
+        <div className='post-edit-like-box'>
+          <img className='post-item-like' src={like} alt='like thumb'/>
+          <span className='post-item-like-number'>{likes}</span>
+        </div>
+
         <p className='post-edit-content'>{content}</p>
-        <div>likes: {likes}</div>
       </div>
     );
 
@@ -48,16 +53,19 @@ class PostEdit extends Component {
       <div className='post-edit-box'>
         { Form }
         <div className='post-edit-btns'>
-          <button
-            onClick={()=>this.closeAndGoBack()}
-            className='post-edit-btn'>
-            Cancel
-          </button>
-          <button
-            className='post-edit-btn post-edit-btn-update'
-            onClick={()=>editingPost(!this.props.post.editing)}>
-          { !editing ? 'Edit' : 'Cancel Edit' }
-          </button>
+          <div>
+            <button
+              onClick={()=>this.closeAndGoBack()}
+              className='post-edit-btn'>
+              Cancel
+            </button>
+            <button
+              className='post-edit-btn post-edit-btn-update'
+              onClick={()=>editingPost(!this.props.post.editing)}>
+            { !editing ? 'Edit' : 'Cancel Edit' }
+            </button>
+          </div>
+
           <button
             className='post-edit-btn post-edit-btn-delete'
             onClick={()=>deletePost(_id, history)}>
@@ -93,11 +101,3 @@ export default connect(
     deletePost
   }
 )(withRouter(PostEdit));
-
-// shouldComponentUpdate(nextProps){
-//   if(this.props.post.item._id === nextProps.post.item._id){
-//     return false
-//   }
-//
-//   return true;
-// }

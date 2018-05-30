@@ -57,7 +57,6 @@ export const deletePost = (postId, history) => async dispatch => {
 export const editingPost= isEditing => ({ type: types.EDIT_POST, payload: isEditing });
 
 export const editPostSubmit = (postId, postData, history) => async dispatch => {
-  console.log(postData)
   try {
     await axios.put(`/api/posts/${postId}`, postData );
     const posts = await fetchPosts();
