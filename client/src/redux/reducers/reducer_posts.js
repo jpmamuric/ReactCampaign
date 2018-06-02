@@ -6,7 +6,8 @@ const initialState = {
   title: '',
   content: '',
   err: '',
-  editing: false
+  editing: false,
+  loading: false
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         content: action.payload
+      };
+    case types.LOADING_POST:
+      return {
+        ...state,
+        loading: action.payload
       };
     case types.LOAD_POSTS:
       return {
@@ -42,8 +48,15 @@ export default (state = initialState, action) => {
     case types.GET_POST_SUCCESS:
       return {
         ...state,
-        item: action.payload
+        item: action.payload,
+        loading: false
       };
+    case types.GET_POST_FAIL:
+      return {
+        ...state,
+        err: action.payload,
+        loading: false
+      }
     case types.DELETE_POST_FAIL:
       return {
         ...state,

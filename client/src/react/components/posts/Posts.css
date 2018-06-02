@@ -75,7 +75,6 @@ POST EDIT
 .post-edit-container{
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
