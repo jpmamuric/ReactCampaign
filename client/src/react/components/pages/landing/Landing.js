@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import landingImg from '../../../../assets/emails.png';
+import Button from '../../layout/button/Button';
 import './Landing.css';
 
 const Landing = ({ user }) => {
   let landing = (
-    <div className='Landing-container'>
-      <img src={landingImg} alt='email surverys' className='Landing-img'/>
-      <div className='Landing-text'>
-        <h2 className='Landing-heading'> Welcome! </h2>
-        <p className='Landing-heading-sub'>Collect feedback from your users emails.</p>
+    <div>
+      <div className='landing-container'>
+        <img src={landingImg} alt='email surverys' className='landing-img'/>
+        <div className='landing-text'>
+          <h2 className='landing-heading'> The simple solution for online feedback. </h2>
+          <p className='landing-heading-sub'>Collect feedback from your users emails.</p>
+          <Button link='/auth/google' >Learn More</Button>
+        </div>
       </div>
+      <div className="landing-features"></div>
     </div>
+
   )
 
   if( user ) {

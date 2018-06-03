@@ -1,3 +1,15 @@
+/*
+
+  RESPONSE BREAKPOINT SIZES FOR MEDIA QUERIES
+
+  largest: 75em      1200px
+  large: 68.75em     1100px
+  medium: 56.25em    900px
+  small: 37.5em      600px
+  smallest: 31.25em  500px
+
+*/
+
 :root {
   --color-primary: rgba(96,171,248,1);
 }
