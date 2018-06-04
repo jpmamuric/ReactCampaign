@@ -67,7 +67,6 @@ POST ITEM
 POST EDIT
 ******************************/
 .post-edit-content {
-  
   overflow: scroll;
   line-height: 1.7rem;
 }
