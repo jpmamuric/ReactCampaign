@@ -67,7 +67,7 @@ POST ITEM
 POST EDIT
 ******************************/
 .post-edit-content {
-  min-height: 40rem;
+  
   overflow: scroll;
   line-height: 1.7rem;
 }
@@ -129,7 +129,7 @@ MEDIA QUIERIES
 ******************************/
 @media (max-width: 56.25em) {
   .post-edit-content {
-    min-height: 23rem;
+
   }
 }
 
@@ -149,13 +149,13 @@ MEDIA QUIERIES
   }
 
   .post-edit-content {
-    max-height: 17rem;
+
   }
 
 }
 
 @media (max-width: 31.25em) {
   .post-edit-content {
-    max-height: 30rem;
+
   }
 }

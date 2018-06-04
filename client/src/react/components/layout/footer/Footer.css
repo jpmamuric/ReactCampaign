@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+}
+
+
+.footer-link,
+.footer-link:link,
+.footer-link:visited {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-primary);
+}

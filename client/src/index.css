@@ -12,6 +12,7 @@
 
 :root {
   --color-primary: rgba(96,171,248,1);
+
 }
 
 body {
@@ -32,4 +33,11 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+}
+
+.heading-1 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
