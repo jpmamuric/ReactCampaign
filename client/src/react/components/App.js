@@ -1,14 +1,30 @@
 import React, { Component }     from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect }              from 'react-redux';
+
 import * as actions             from '../../redux/actions/auth';
+
+import LazyLoad                 from './hoc/LazyLoad';
 import Layout                   from './layout/Layout';
 import LandingPage              from './pages/landing/Landing';
 import DashboardPage            from './pages/dashboard/Dashboard';
-import CreateSurveyPage         from './pages/survey/CreateSurvey';
-import EditSurveyPage           from './pages/survey/EditSurvey';
-import NotesPage                from './pages/notes/Notes';
-import NotFoundPage             from './pages/notfound/NotFound';
+
+const CreateSurveyPage = LazyLoad(()=>{
+  return import('./pages/survey/CreateSurvey');
+});
+
+const EditSurveyPage = LazyLoad(()=>{
+  return import('./pages/survey/EditSurvey');
+});
+
+const NotesPage = LazyLoad(()=>{
+  return import('./pages/notes/Notes');
+});
+
+const NotFoundPage = LazyLoad(()=>{
+  return import('./pages/notfound/NotFound');
+});
+
 
 class App extends Component {
   componentDidMount(){
